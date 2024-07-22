@@ -1,0 +1,22 @@
+# xAILAB Bamberg
+# Chair of Explainable Machine Learning
+# Otto-Friedrich University of Bamberg
+#
+# @description:
+# Contains all the required packages for the project.
+#
+# @author: Sebastian Doerrich
+# @email: sebastian.doerrich@uni-bamberg.de
+
+name: unoranic+
+dependencies:
+  - python=3.8
+  - pytorch
+  - timm
+  - torchmetrics
+  - matplotlib
+  - seaborn
+  - wandb
+  - albumentations
+  - medmnist
+  - imagecorruptions

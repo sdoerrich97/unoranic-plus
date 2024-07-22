@@ -1,0 +1,37 @@
+# xAILAB Bamberg
+# Chair of Explainable Machine Learning
+# Otto-Friedrich University of Bamberg
+#
+# @description:
+# Parameter and hyperparameter configurations of the used models for the corruption robustness objective.
+# higher resolution bloodmnist Dataset
+#
+# @author: Sebastian Doerrich
+# @email: sebastian.doerrich@uni-bamberg.de
+
+# ######################################
+# Parameter and hyperparameter configurations
+# ######################################
+# Parameters
+dataset: 'bloodmnist_real'  # Which dataset to use.
+data_path: '../data/MedMNIST/bloodmnist_real.npz'  # Where the dataset is stored
+input_path: '../checkpoints/classification'  # Parent directory to where the trained models with classification objective are stored.
+output_path: '../output/corruption_robustness'  # Parent directory to where the evaluation shall be stored.
+architecture_encoder: 'unoranic+'  # Which model to use for the encoder.
+architecture_decoder: 'single_layer'  # Which model to use for the decoder.
+seed: 1333  # Seed for random operations for reproducibility.
+device: 'cuda:1'  # Which device to run the computations on.
+
+# Hyperparameters
+img_size: 224  # Height and width of the input
+in_channel: 3  # Channel dimension of the input
+patch_size: 16  # Size of image patches.
+latent_dim: 768  # Feature dimension of latent space.
+depth: 12  # Depth (Number of blocks) of the encoder and decoder.
+num_heads: 16  # Number of attention heads.
+mlp_ratio: 4.  # Ratio of the hidden dimension compared to the input dimension of the Multi-Layer-Perceptron (MLP) - layer.
+norm_layer: 'nn.LayerNorm'  # Normalization layer.
+batch_size: 512  # Batch size for the training.
+dropout: 0.0  # Dropout rate.
+task: 'multi-class'  # Classification task.
+nr_classes: 8  # Number of classes for the classification.
