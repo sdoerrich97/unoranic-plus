@@ -26,10 +26,10 @@ and versatility.
 We comprehensively evaluate unORANIC+ in terms of [reconstruction quality](#image-reconstruction-quality), capability to revise existing corruptions, corruption robustness, and its effectiveness in downstream tasks such as disease classification and corruption detection. To allow a fair comparison with its predecessor *unORANIC*, we utilize the same diverse selection of $28 \times 28$ biomedical 2D datasets from the [MedMNIST v2 benchmark](https://medmnist.com/) the original method was evaluated on, including breastMNIST ($546$ training samples), retinaMNIST ($1,080$), pneumoniaMNIST ($4,078$), dermaMNIST ($7,007$), and bloodMNIST ($11,959$). Additionally, we assess all models on the larger chestMNIST dataset ($78,468$ training samples) as well. Finally, in addressing a major limitation of unORANIC, which was exclusively evaluated on $28 \times 28$ images, we investigate unORANIC+’s potential to handle higher dimensional data as well. This is achieved by adopting a higher resolution version (bloodHD) of the bloodMNIST dataset comprising images of $224 \times 224$ pixels, by using the original data samples in combination with the MedMNIST train-, validation-, and test-splits.
 
 <p align="middle">
-  <img src="assets/dataset.png" width="650" />
+  <img src="assets/dataset.png" width="950" />
 </p>
 
-Figure 2: Examples from the datasets of the [MedMNIST v2 benchmark](https://medmnist.com/) used for evaluating our approach (left to right, top to bottom: bloodMNIST, breastMNIST, chestMNIST, dermaMNIST, pneumoniaMNIST, retinaMNIST).
+Figure 2: Examples from the datasets of the [MedMNIST v2 benchmark](https://medmnist.com/) used for evaluating our approach (left to right: bloodMNIST, breastMNIST, chestMNIST, dermaMNIST, pneumoniaMNIST, retinaMNIST).
 
 ### Image Reconstruction Quality
 
@@ -37,7 +37,7 @@ Figure 2: Examples from the datasets of the [MedMNIST v2 benchmark](https://medm
   <img src="assets/image_reconstruction_quality.png" width="650" />
 </p>
 
-Table 1: Comparison of average Peak Signal-to-Noise Ratio (PSNR) and Structural Similarity Index Metric (SSIM) values for the anatomical reconstructions ($\hat{I}_A$) and the reconstructions of the original input ($\hat{I}$) given an uncorrupted input image $(I)$ between unORANIC and unORANIC+ on the test sets of various datasets.
+Table 1: Comparison of average Peak Signal-to-Noise Ratio (PSNR) and Structural Similarity Index Metric (SSIM) values for the anatomical reconstructions ($\hat{I}_A$) and the reconstructions of the original input ($\hat{I}_\phantom{i}$) given an uncorrupted input image $(I)$ between unORANIC and unORANIC+ on the test sets of various datasets.
 
 ### Corruption Revision Capability
 
