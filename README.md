@@ -37,7 +37,7 @@ Figure 2: Examples from the datasets of the [MedMNIST v2 benchmark](https://medm
   <img src="assets/image_reconstruction_quality.png" width="650" />
 </p>
 
-Table 1: Comparison of average Peak Signal-to-Noise Ratio (PSNR) and Structural Similarity Index Metric (SSIM) values for the anatomical reconstructions ($\hat{I}_A$) and the reconstructions of the original input ($\hat{I}_\phantom{i}$) given an uncorrupted input image $(I)$ between unORANIC and unORANIC+ on the test sets of various datasets.
+Table 1: Comparison of average Peak Signal-to-Noise Ratio (PSNR) and Structural Similarity Index Metric (SSIM) values for the anatomical reconstructions ($\hat I_A$) and the reconstructions of the original input ($\hat I_ \ $) given an uncorrupted input image $(I)$ between unORANIC and unORANIC+ on the test sets of various datasets.
 
 ### Corruption Revision Capability
 
