@@ -57,7 +57,13 @@ Figure 4: Left: Comparison of the classification and corruption detection result
 
 ## Getting Started 🚀
 ### Project Structure
-- TBD
+- [`assets`](https://github.com/sdoerrich97/unoranic-plus/tree/main/assets): Assets for the README
+- [`config`](https://github.com/sdoerrich97/unoranic-plus/tree/main/config): Training/evaluation and experiment configurations
+- [`experiments`](https://github.com/sdoerrich97/unoranic-plus/tree/main/experiments): Experiments presented in the paper
+- [`models`](https://github.com/sdoerrich97/unoranic-plus/tree/main/models): Model structure
+- [`training`](https://github.com/sdoerrich97/unoranic-plus/tree/main/training): Training and evaluation scripts
+- [`environment.yaml`](https://github.com/sdoerrich97/unoranic-plus/tree/main/environment.yaml): Package Requirements
+- [`utils.py`](https://github.com/sdoerrich97/unoranic-plus/blob/main/utils.py): Helper functions
 
 ### Installation and Requirements
 #### Clone this Repository:
@@ -75,7 +81,56 @@ conda create --name unoranicPlus python=3.8
 Of course, you can use a standard Python distribution as well.
 
 #### Install Required Packages From the Terminal Using Conda (Recommended)
-TBD
+All required packages are listed in [`environment.yaml`](https://github.com/sdoerrich97/vits-are-generative-models/blob/main/environment.yaml).
+
+Activate your Conda environment in your terminal:
+```
+conda activate unoranicPlus
+```
+
+Once Conda is activated, install PyTorch depending on your system's configuration. For example for Linux using Conda and CUDA 12.1 use the following command. For all other configurations refer to the official [PyTorch documentation](https://pytorch.org/):
+```
+conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
+```
+
+Install required Python packages via Conda:
+```
+conda install conda-forge::matplotlib
+conda install anaconda::seaborn
+conda install fastai::timm
+conda install conda-forge::torchmetrics
+```
+
+Additionally, navigate to your newly created Conda environment within your Conda install and install the remaining Python Packages from [PyPI](https://pypi.org/):
+```
+cd ../miniconda3/envs/scalableGenModels/Scripts
+pip install medmnist
+pip install imagecorruptions
+pip install wandb
+pip install -U albumentations
+```
+
+If you use a standard Python distribution instead, you need to adjust the installation steps accordingly.
+
+### Quick Start
+Once all requirements are installed, make sure the Conda environment is active and navigate to the project directory:
+```
+cd ../unoranic-plus
+```
+
+You can adjust the parameters and hyperparameters of each training/evaluation run within the respective copy within [`config`](https://github.com/sdoerrich97/unoranic-plus/tree/main/config).
+
+Once the config files are all set, you can execute for example a training or inference run for the bloodmnist dataset using:
+```
+python training/train.py --config_file '../configs/training/config_bloodmnist.yaml'
+python training/inference.py --config_file '../configs/training/config_bloodmnist.yaml'
+```
+Please note that the project uses relative import statements. **Thus, it is important that you execute the code from the project root.**
+
+Additionally, you can adjust some parameters on the fly. Please check out the main()-function of each training/evaluation script to see what these are. In case you intend to use Weights & Biases to track your experiments, you need to set it up respectively: [W&B Quickstart](https://docs.wandb.ai/quickstart)
+
+Lastly, you will find all parameters (model architectures, number of epochs, learning rate, etc.) we used for our benchmark within the provided config-files within [`config`](https://github.com/sdoerrich97/unoranic-plus/tree/main/config) in case you want to reproduce our results. If you want to use your own models and datasets, you only need to adjust the config-file, respectively.
+
 
 # Citation 📖
 If you find this work useful in your research, please consider citing our paper:
