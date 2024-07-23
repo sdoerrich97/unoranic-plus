@@ -1,5 +1,5 @@
 # unoranic-plus
-Official code repository for the paper "Unsupervised Feature Orthogonalization for Learning Distortion-Invariant Representations"
+Official code repository for the paper *"Unsupervised Feature Orthogonalization for Learning Distortion-Invariant Representations"*.
 
 ## Overview 🧠
 We introduce *unORANIC+*, a novel method that integrates unsupervised feature orthogonalization with the ability of a Vision Transformer to capture both local and global relationships for improved robustness and generalizability. The streamlined architecture of *unORANIC+* effectively separates anatomical and image-specific attributes, resulting in robust and unbiased latent representations that allow the model to demonstrate excellent performance across various medical image analysis tasks and diverse datasets. Extensive experimentation demonstrates *unORANIC+*’s reconstruction proficiency, corruption resilience, as well as distortion revision capability. Additionally, the model exhibits notable aptitude in downstream tasks such as disease classification
