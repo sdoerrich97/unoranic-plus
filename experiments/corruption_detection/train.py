@@ -149,7 +149,12 @@ class Trainer:
             self.model.requires_grad_(True)
 
         else:
-            self.model.encoder.requires_grad_(False)
+            if self.architecture_encoder == 'unoranic':
+                self.model.encoder_anatomy.requires_grad_(False)
+                self.model.encoder_characteristics.requires_grad_(False)
+
+            else:
+                self.model.encoder.requires_grad_(False)
 
         # Initialize the optimizer and learning rate scheduler
         print("\tInitializing the optimizer and lr scheduler...")
