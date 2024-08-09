@@ -2,31 +2,29 @@
 Official code repository for the paper *"Unsupervised Feature Orthogonalization for Learning Distortion-Invariant Representations"*.
 
 ## Overview 🧠
-We introduce *unORANIC+*, a novel method that integrates unsupervised feature orthogonalization with the ability of a Vision Transformer to capture both local and global relationships for improved robustness and generalizability. The streamlined architecture of *unORANIC+* effectively separates anatomical and image-specific attributes, resulting in robust and unbiased latent representations that allow the model to demonstrate excellent performance across various medical image analysis tasks and diverse datasets. Extensive experimentation demonstrates *unORANIC+*’s reconstruction proficiency, corruption resilience, as well as distortion revision capability. Additionally, the model exhibits notable aptitude in downstream tasks such as disease classification
-and corruption detection. We confirm its adaptability to diverse datasets of varying image sources and sample sizes which positions the method as a promising algorithm for advanced medical image analysis, particularly in resource-constrained environments lacking large, tailored, labeled datasets.
+We introduce *unORANIC+*, a novel method that integrates unsupervised feature orthogonalization with the ability of a Vision Transformer to capture both local and global relationships for improved robustness and generalizability. The streamlined architecture of *unORANIC+* effectively separates anatomical and image-specific attributes, resulting in robust and unbiased latent representations that allow the model to demonstrate excellent performance across various medical image analysis tasks and diverse datasets. Extensive experimentation demonstrates *unORANIC+'s* reconstruction proficiency, corruption resilience, as well as capability to revise existing image distortions. Additionally, the model exhibits notable aptitude in downstream tasks such as disease classification and corruption detection. We confirm its adaptability to diverse datasets of varying image sources and sample sizes which positions the method as a promising algorithm for advanced medical image analysis, particularly in resource-constrained environments lacking large, tailored datasets.
 
 <p align="middle">
-  <img src="assets/architecture_anim.svg" width="950" />
+  <img src="assets/idea.svg" width="950" />
 </p>
 
-Figure 1: Schematic representation of the training pipeline for the refined *unORANIC+* for chest X-ray images. The polar arrows illustrate the forward
-propagation and gradient flow, respectively.
+Figure 1: High-level overview of our proposed approach. During training, the encoder $E$ is trained to orthogonalize anatomical and image-characteristic features in an input image using a reconstruction objective (<span style="color:#FFE6CC">orange path</span>). Once trained, the learned feature orthogonalization by the frozen encoder is used for various downstream tasks, including bias removal, corruption detection and revision in input images, as well as robust, distortion-invariant disease classification (<span style="color:#E1D5E7">purple path</span>).
 
 Subsequent sections outline the paper's [key contributions](#key-contributions-), showcase the [obtained results](#results-), and offer instructions on [accessing and utilizing the accompanying codebase](#getting-started-) to replicate the findings and train or evaluate your own models.
 
 ## Key Contributions 🔑
-- **Enhanced Feature Orthogonalization:** *unORANIC+* synergizes unsupervised feature orthogonalization with a Vision Transformer’s ability to capture global-local relationships for improved robustness and generalizability.
-- **Streamlined Architecture:** With a single encoder, *unORANIC+* effectively disentangles anatomical and image attributes, yielding robust latent representations to allow superior performance in a wide range of tasks.
-- **Versatility Across Datasets:** Extensive quantitative experimentation across various datasets and medical conditions displays *unORANIC+*’s performance and versatility.
+- **Enhanced feature orthogonalization:** *unORANIC+* synergizes unsupervised feature orthogonalization with a Vision Transformer’s ability to capture global-local relationships for improved robustness and generalizability.
+- **Streamlined architecture:** with a single encoder, *unORANIC+* effectively disentangles anatomical and image attributes, yielding robust latent representations to allow superior performance in a wide range of tasks.
+- **Versatility across datasets:** extensive quantitative experimentation across various datasets and medical conditions displays *unORANIC+*’s performance and versatility.
 
 ## Results 📊
-We comprehensively evaluate *unORANIC+* in terms of [reconstruction quality](#image-reconstruction-quality), [capability to revise existing corruptions](#corruption-revision-capability), [corruption robustness](#disease-classification-corruption-detection-and-corruption-robustness-potential), and its effectiveness in downstream tasks such as [disease classification](#disease-classification-corruption-detection-and-corruption-robustness-potential) and [corruption detection](#disease-classification-corruption-detection-and-corruption-robustness-potential). To allow a fair comparison with its predecessor *unORANIC*, we utilize the same diverse selection of $28 \times 28$ biomedical 2D datasets from the [MedMNIST v2 benchmark](https://medmnist.com/) the original method was evaluated on, including breastMNIST ($546$ training samples), retinaMNIST ($1,080$), pneumoniaMNIST ($4,078$), dermaMNIST ($7,007$), and bloodMNIST ($11,959$). Additionally, we assess all models on the larger chestMNIST dataset ($78,468$ training samples) as well. Finally, in addressing a major limitation of **, which was exclusively evaluated on $28 \times 28$ images, we investigate *unORANIC+*’s potential to handle higher dimensional data as well. This is achieved by adopting a higher resolution version (bloodHD) of the bloodMNIST dataset comprising images of $224 \times 224$ pixels, by using the original data samples in combination with the MedMNIST train-, validation-, and test-splits.
+We comprehensively evaluate *unORANIC+* in terms of [reconstruction quality](#image-reconstruction-quality), [capability to revise existing corruptions](#corruption-revision-capability), [corruption robustness](#disease-classification-corruption-detection-and-corruption-robustness-potential), and its effectiveness in downstream tasks such as [disease classification](#disease-classification-corruption-detection-and-corruption-robustness-potential) and [corruption detection](#disease-classification-corruption-detection-and-corruption-robustness-potential). To allow a fair comparison with its predecessor *unORANIC*, we utilize the same diverse selection of $28 \times 28$ biomedical 2D datasets from the [MedMNIST v2 benchmark](https://medmnist.com/) the original method was evaluated on, including breastMNIST ($546$ training samples), retinaMNIST ($1,080$), pneumoniaMNIST ($4,078$), dermaMNIST ($7,007$), and bloodMNIST ($11,959$). Additionally, we assess all models on the larger chestMNIST dataset ($78,468$ training samples) as well. Finally, in addressing a major limitation of unORANIC, which was exclusively evaluated on $28 \times 28$ images, we investigate *unORANIC+*'s [potential to handle higher dimensional data](#potential-for-higher-dimensional-datasets) as well. This is achieved by adopting higher resolution versions of the MedMNIST datasets, comprising images of $224 \times 224$ pixels, by using the original data samples in combination with the MedMNIST train-, validation-, and test-splits.
 
 <p align="middle">
   <img src="assets/dataset.png" width="950" />
 </p>
 
-Figure 2: Examples from the datasets of the [MedMNIST v2 benchmark](https://medmnist.com/) used for evaluating our approach (left to right: bloodMNIST, breastMNIST, chestMNIST, dermaMNIST, pneumoniaMNIST, retinaMNIST).
+Figure 2: Examples from the datasets of the [MedMNIST v2 benchmark](https://medmnist.com/) used for evaluating our approach (left to right: blood, breast, chest, derma, pneumonia, and retina).
 
 ### Image Reconstruction Quality
 
@@ -34,7 +32,7 @@ Figure 2: Examples from the datasets of the [MedMNIST v2 benchmark](https://medm
   <img src="assets/image_reconstruction_quality.png" width="650" />
 </p>
 
-Table 1: Comparison of average Peak Signal-to-Noise Ratio (PSNR) and Structural Similarity Index Metric (SSIM) values for the anatomical reconstructions ($\hat I_A$) and the reconstructions of the original input ($\hat I_ \ $) given an uncorrupted input image $(I)$ between *unORANIC* and *unORANIC+* on the test sets of various datasets.
+Table 1: Comparison of average Peak Signal-to-Noise Ratio (PSNR) and Structural Similarity Index Metric (SSIM) values for the anatomical reconstructions ($\hat I_A$) and the reconstructions of the original input ($\hat I_ \ $) given an uncorrupted input image $(I)$ between unORANIC and *unORANIC+*. The best performance per reconstruction task is indicated in **bold**.
 
 ### Corruption Revision Capability
 
@@ -42,7 +40,7 @@ Table 1: Comparison of average Peak Signal-to-Noise Ratio (PSNR) and Structural 
   <img src="assets/corruption_revision_capability.svg" width="950" />
 </p>
 
-Figure 3: Comparison of corruption revision capabilities between the predecessor *unORANIC* and *unORANIC+*. Left: their reconstruction consistency is depicted despite the corruption-related image quality loss, described here in terms of the PSNR between the original image $I$ and the corruption-respective distorted variant $S$ (green dotted line). Right: the illustration highlights the distortion correction capabilities of both methods using Gaussian noise as an example.
+Figure 3: Corruption revision capabilities of unORANIC and *unORANIC+*. In (a), their reconstruction consistency is depicted despite the corruption-related image quality loss (PSNR between the original image $I$ and the distorted variant $S$ - "green dotted line"). (b) highlights the distortion correction capabilities of both methods using Gaussian noise as an example.
 
 ### Disease Classification, Corruption Detection, and Corruption Robustness Potential
 
@@ -50,7 +48,22 @@ Figure 3: Comparison of corruption revision capabilities between the predecessor
   <img src="assets/classification_detection_robustness.png" width="950" />
 </p>
 
-Figure 4: Left: Comparison of the classification and corruption detection results on the bloodMNIST dataset. Results from fully supervised models, trained end-to-end, are indicated with $^ \dagger$. The highest overall performance is <ins>underlined</ins>, while the second best performance is indicated in **bold**. Right: Visualization of *unORANIC+*'s resilience to unseen corruptions compared to the reference models (*unORANIC* and the supervised ResNet-18 baseline), demonstrated by its robust disease classification performance for bloodMNIST even under the influence of unknown corruptions with rising severity, visualized through different textures (&nbsp;&nbsp;, $\cdot$ , $\times$). For reference, the plot contains the supervised classification benchmark (*i.e.,* ResNet-18) for uncorrupted images as well.
+Figure 4: Left: comparison of the classification and corruption detection results on the bloodMNIST dataset. Fully supervised models, trained end-to-end, are indicated with $^ \dagger$. A superior performance of *unORANIC+* compared to unORANIC is indicated in **bold**. Right: visualization of *unORANIC+*'s resilience to unseen corruptions compared to the reference models (unORANIC and the supervised ResNet-18 baseline), demonstrated by its robust disease classification performance for bloodMNIST even under the influence of unknown corruptions with rising severity, visualized through different textures (&nbsp;&nbsp;, $\cdot$ , $\times$). For reference, the plot contains the supervised classification benchmark (*i.e.,* ResNet-18) for uncorrupted images as well.
+
+### Potential for Higher Dimensional Datasets
+
+<p align="middle">
+  <img src="assets/image_reconstruction_quality_higher_res.png" width="750" />
+</p>
+
+Table 2: Comparison of average Peak Signal-to-Noise Ratio (PSNR) for the reconstructions of the original input ($\hat I_A$) and the clean anatomical reconstructions $\hat I_ \ $) given an input image ($I$) between unORANIC and *unORANIC+* on the test sets of all six higher dimensional datasets. The best performance per reconstruction task is indicated in **bold**.
+
+<p align="middle">
+  <img src="assets/classification_detection_higher_res.png" width="750" />
+</p>
+
+Table 3: Comparison of the disease classification and corruption detection results across the higher dimensional datasets. Fully supervised models, trained end-to-end, are indicated with $^ \dagger$. **Bold** highlights superior performance of *unORANIC+* compared to unORANIC, while <u>underlining</u> indicates cases where *unORANIC+* even surpasses the best supervised baseline.
+
 
 ## Getting Started 🚀
 ### Project Structure
