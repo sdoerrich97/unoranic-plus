@@ -156,8 +156,6 @@ If you find this work useful in your research, please consider citing our paper:
     author={Sebastian Doerrich and Francesco Di Salvo and Christian Ledig},
     year={2024},
     eprint={2409.12276},
-    archivePrefix={arXiv},
-    primaryClass={eess.IV},
-    url={https://arxiv.org/abs/2409.12276}, 
+    archivePrefix={arXiv}, 
 }
 ```
