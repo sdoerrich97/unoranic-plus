@@ -1,6 +1,6 @@
 # Unsupervised Feature Orthogonalization for Learning Distortion-Invariant Representations @BMVC-RROW 2024
 <p align="center">
-    <!--[<a href="">Preprint</a>]-->
+    [<a href="https://arxiv.org/abs/2409.12276">Preprint</a>]
     <!--[<a href="">Publication</a>]-->
     [<a href="#citation-">Citation</a>]
 </p>
@@ -149,5 +149,15 @@ Lastly, you will find all parameters (model architectures, number of epochs, lea
 # Citation 📖
 If you find this work useful in your research, please consider citing our paper:
 - Publication: TBD
-- Preprint: TBD
-
+- [Preprint](https://arxiv.org/abs/2409.12276)
+```
+@InProceedings{doerrich2024unoranicPlus,
+    title={Unsupervised Feature Orthogonalization for Learning Distortion-Invariant Representations},
+    author={Sebastian Doerrich and Francesco Di Salvo and Christian Ledig},
+    year={2024},
+    eprint={2409.12276},
+    archivePrefix={arXiv},
+    primaryClass={eess.IV},
+    url={https://arxiv.org/abs/2409.12276}, 
+}
+```
