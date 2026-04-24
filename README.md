@@ -1,10 +1,10 @@
 # Unsupervised Feature Orthogonalization for Learning Distortion-Invariant Representations @BMVC-RROW 2024
 <p align="center">
     [<a href="https://arxiv.org/abs/2409.12276">Preprint</a>]
-    <!--[<a href="">Publication</a>]-->
+    [<a href="https://bmva-archive.org.uk/bmvc/2024/workshops/RROW/02_Unsupervised_Feature_Orthogo.pdf">Publication</a>]
     [<a href="#citation-">Citation</a>]
 </p>
-  
+
 ## Overview 🧠
 We introduce *unORANIC+*, a novel method that integrates unsupervised feature orthogonalization with the ability of a Vision Transformer to capture both local and global relationships for improved robustness and generalizability. The streamlined architecture of *unORANIC+* effectively separates anatomical and image-specific attributes, resulting in robust and unbiased latent representations that allow the model to demonstrate excellent performance across various medical image analysis tasks and diverse datasets. Extensive experimentation demonstrates *unORANIC+'s* reconstruction proficiency, corruption resilience, as well as capability to revise existing image distortions. Additionally, the model exhibits notable aptitude in downstream tasks such as disease classification and corruption detection. We confirm its adaptability to diverse datasets of varying image sources and sample sizes which positions the method as a promising algorithm for advanced medical image analysis, particularly in resource-constrained environments lacking large, tailored datasets.
 
@@ -148,14 +148,14 @@ Lastly, you will find all parameters (model architectures, number of epochs, lea
 
 # Citation 📖
 If you find this work useful in your research, please consider citing our paper:
-- Publication: TBD
+- [Publication](https://bmva-archive.org.uk/bmvc/2024/workshops/RROW/02_Unsupervised_Feature_Orthogo.pdf)
 - [Preprint](https://arxiv.org/abs/2409.12276)
 ```
-@InProceedings{doerrich2024unoranicPlus,
-    title={Unsupervised Feature Orthogonalization for Learning Distortion-Invariant Representations},
-    author={Sebastian Doerrich and Francesco Di Salvo and Christian Ledig},
-    year={2024},
-    eprint={2409.12276},
-    archivePrefix={arXiv}, 
+@inproceedings{doerrich2024unoranicPlus,
+  author    = {Doerrich, Sebastian and {Di Salvo}, Francesco and Ledig, Christian},
+  title     = {Unsupervised Feature Orthogonalization for Learning Distortion-Invariant Representations},
+  booktitle = {Proceedings of the British Machine Vision Conference (BMVC) Workshop on Robust Recognition in the Open World (RROW)},
+  year      = {2024},
+  url       = {https://bmva-archive.org.uk/bmvc/2024/workshops/RROW/02_Unsupervised_Feature_Orthogo.pdf},
 }
 ```
